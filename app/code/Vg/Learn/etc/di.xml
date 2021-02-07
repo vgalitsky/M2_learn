@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Vg\Learn\Api\DataRepositoryInterface" type="Vg\Learn\Model\DataRepository" />
+    <preference for="Vg\Learn\Api\Vendor\DataInterface" type="Vg\Learn\Model\Vendor" />
+    <virtualType name="LearnVendorGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="LearnVendorGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Vg\Learn\Model\Resource\Vendor\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">LearnVendorGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Vg\Learn\Model\ResourceModel\Vendor\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">vg_learn_vendor</argument>
+            <argument name="resourceModel" xsi:type="string">Vg\Learn\Model\ResourceModel\Vendor</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="learn_vendor_grid_data_source" xsi:type="string">Vg\Learn\Model\ResourceModel\Vendor\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Vg\Learn\Controller\Adminhtml\Vendor\MassDelete">
+        <arguments>
+            <argument name="successMessage" xsi:type="string" translate="true">%1 deleted.</argument>
+            <argument name="errorMessage" xsi:type="string" translate="true">An Error was occured.</argument>
+        </arguments>
+    </type>
+    <type name="Vg\Learn\Controller\Adminhtml\Vendor\MassDisable">
+        <arguments>
+            <argument name="successMessage" xsi:type="string" translate="true">%1 disabled.</argument>
+            <argument name="errorMessage" xsi:type="string" translate="true">An error has occurred</argument>
+        </arguments>
+    </type>
+    <type name="Vg\Learn\Controller\Adminhtml\Vendor\MassEnable">
+        <arguments>
+            <argument name="successMessage" xsi:type="string" translate="true">%1 enabled.</argument>
+            <argument name="errorMessage" xsi:type="string" translate="true">An error has occurred</argument>
+        </arguments>
+    </type>
+    
+    
+    <virtualType name="Vg\Learn\ReferenceLogoUploader" type="Vg\Learn\Model\Vendor\LogoUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">vg/learn/vendor/tmp/logo</argument>
+            <argument name="basePath" xsi:type="string">learn/vendor/logo</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument> 
+        </arguments>
+    </virtualType>
+ 
+    <type name="Vg\Learn\Controller\Adminhtml\Vendor\UploadLogo">
+        <arguments>
+            <argument name="logoUploader" xsi:type="object">Vg\Learn\ReferenceLogoUploader</argument>
+        </arguments>
+    </type>
+    <!--type name="Vg\Learn\Model\Vendor">
+        <arguments>
+            <argument name="StoreManagerInterface" xsi:type="object">\Magento\Store\Model\StoreManagerInterface</argument>
+        </arguments>
+    </type-->
+    
+    
+</config>

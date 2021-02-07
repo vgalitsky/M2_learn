@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">vg_vendor_form.learn_vendor_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Vendor Info</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Vg\Learn\Block\Adminhtml\Vendor\Edit\Buttons\Back" />
+            <button name="delete" class="Vg\Learn\Block\Adminhtml\Vendor\Edit\Buttons\Delete" />
+            <button name="reset" class="Vg\Learn\Block\Adminhtml\Vendor\Edit\Buttons\Reset" />
+            <button name="save" class="Vg\Learn\Block\Adminhtml\Vendor\Edit\Buttons\Save" />
+            <button name="save_and_continue" class="Vg\Learn\Block\Adminhtml\Vendor\Edit\Buttons\SaveAndContinue" />
+        </buttons>
+        <namespace>learn_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>vg_vendor_form.learn_vendor_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="learn_vendor_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="vglearn/vendor/save"/>
+        </settings>
+        <dataProvider class="Vg\Learn\Model\DataProvider" name="learn_vendor_form_data_source">
+            <settings>
+                <requestFieldName>vendor_id</requestFieldName>
+                <primaryFieldName>vendor_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="vendor_details">
+        <settings>
+            <label/>
+        </settings>
+        <field name="vendor_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">data</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>vendor_id</dataScope>
+            </settings>
+        </field>
+        
+        <field name="name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">data</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Vendor Name</label>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+        <!--field name="created_at" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">data</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Created at</label>
+                <dataScope>name</dataScope>
+            </settings>
+        </field-->
+        <field name="logo" formElement="imageUploader">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">data</item>
+                </item>
+            </argument>
+            <settings>
+                <notice translate="true"></notice>
+                <label translate="true">Logo</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>2097152</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">vglearn/vendor/UploadLogo</param>
+                        </uploaderConfig>
+                        <previewTmpl>Vg_Learn/logo_preview</previewTmpl>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="description" formElement="wysiwyg">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">data</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label/>
+                <dataScope>description</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

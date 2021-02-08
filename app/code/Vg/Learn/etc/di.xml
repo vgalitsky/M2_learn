@@ -2,6 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Vg\Learn\Api\DataRepositoryInterface" type="Vg\Learn\Model\DataRepository" />
     <preference for="Vg\Learn\Api\Vendor\DataInterface" type="Vg\Learn\Model\Vendor" />
+    
     <virtualType name="LearnVendorGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
         <arguments>
             <argument name="appliers" xsi:type="array">
@@ -10,18 +11,21 @@
             </argument>
         </arguments>
     </virtualType>
+    
     <virtualType name="LearnVendorGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
         <arguments>
             <argument name="collection" xsi:type="object" shared="false">Vg\Learn\Model\Resource\Vendor\Collection</argument>
             <argument name="filterPool" xsi:type="object" shared="false">LearnVendorGridFilterPool</argument>
         </arguments>
     </virtualType>
+    
     <virtualType name="Vg\Learn\Model\ResourceModel\Vendor\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">vg_learn_vendor</argument>
             <argument name="resourceModel" xsi:type="string">Vg\Learn\Model\ResourceModel\Vendor</argument>
         </arguments>
     </virtualType>
+    
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
@@ -29,25 +33,27 @@
             </argument>
         </arguments>
     </type>
+    
     <type name="Vg\Learn\Controller\Adminhtml\Vendor\MassDelete">
         <arguments>
             <argument name="successMessage" xsi:type="string" translate="true">%1 deleted.</argument>
             <argument name="errorMessage" xsi:type="string" translate="true">An Error was occured.</argument>
         </arguments>
     </type>
+    
     <type name="Vg\Learn\Controller\Adminhtml\Vendor\MassDisable">
         <arguments>
             <argument name="successMessage" xsi:type="string" translate="true">%1 disabled.</argument>
             <argument name="errorMessage" xsi:type="string" translate="true">An error has occurred</argument>
         </arguments>
     </type>
+    
     <type name="Vg\Learn\Controller\Adminhtml\Vendor\MassEnable">
         <arguments>
             <argument name="successMessage" xsi:type="string" translate="true">%1 enabled.</argument>
             <argument name="errorMessage" xsi:type="string" translate="true">An error has occurred</argument>
         </arguments>
     </type>
-    
     
     <virtualType name="Vg\Learn\ReferenceLogoUploader" type="Vg\Learn\Model\Vendor\LogoUploader">
         <arguments>
@@ -73,11 +79,13 @@
             <argument name="logoUploader" xsi:type="object">Vg\Learn\ReferenceLogoUploader</argument>
         </arguments>
     </type>
-    <!--type name="Vg\Learn\Model\Vendor">
-        <arguments>
-            <argument name="StoreManagerInterface" xsi:type="object">\Magento\Store\Model\StoreManagerInterface</argument>
-        </arguments>
-    </type-->
     
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="vendor-product-list" type="Vg\Learn\Plugin\ProductList"/>
+    </type>
     
+    <virtualType name="Magento\CatalogSearch\Block\SearchResult\ListProduct">
+        <plugin name="block-product-list" type="Vg\Learn\Plugin\ProductList" />
+    </virtualType>
+        
 </config>

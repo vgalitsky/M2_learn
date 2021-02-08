@@ -8,14 +8,10 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Vendor extends AbstractDb
 {
-    /**
-     * @var \Magento\Framework\Stdlib\DateTime\DateTime
-     */
+    
     protected $date;
 
     /**
-     * Data constructor.
-     *
      * @param Context $context
      * @param DateTime $date
      */
@@ -28,8 +24,7 @@ class Vendor extends AbstractDb
     }
 
     /**
-     * Resource initialisation
-     * @codingStandardsIgnoreStart
+     * 
      */
     protected function _construct()
     {

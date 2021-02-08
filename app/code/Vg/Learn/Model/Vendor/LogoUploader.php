@@ -18,65 +18,16 @@ use Psr\Log\LoggerInterface;
 class LogoUploader
 {
     const IMAGE_TMP_PATH = 'vg/learn/vendor/tmp/logo';
- 
     const IMAGE_PATH = 'vg/learn/vendor/logo';
-    /**
-     * @var Database
-     */
+    
     protected $coreFileStorageDatabase;
- 
-    /**
-     * Media directory object (writable).
-     *
-     * @var WriteInterface
-     */
     protected $mediaDirectory;
- 
-    /**
-     * Uploader factory
-     *
-     * @var UploaderFactory
-     */
     protected $uploaderFactory;
- 
-    /**
-     * Store manager
-     *
-     * @var StoreManagerInterface
-     */
     protected $storeManager;
- 
-    /**
-     * @var LoggerInterface
-     */
     protected $logger;
- 
-    /**
-     * Base tmp path
-     *
-     * @var string
-     */
     protected $baseTmpPath;
- 
-    /**
-     * Base path
-     *
-     * @var string
-     */
     protected $basePath;
- 
-    /**
-     * Allowed extensions
-     *
-     * @var string
-     */
     protected $allowedExtensions;
- 
-    /**
-     * List of allowed image mime types
-     *
-     * @var string[]
-     */
     protected $allowedMimeTypes;
  
     /**
@@ -116,11 +67,7 @@ class LogoUploader
     }
  
     /**
-     * Set base tmp path
-     *
-     * @param string $baseTmpPath
-     *
-     * @return void
+     * @param type $baseTmpPath
      */
     public function setBaseTmpPath($baseTmpPath)
     {
@@ -128,11 +75,7 @@ class LogoUploader
     }
  
     /**
-     * Set base path
-     *
      * @param string $basePath
-     *
-     * @return void
      */
     public function setBasePath($basePath)
     {
@@ -140,11 +83,8 @@ class LogoUploader
     }
  
     /**
-     * Set allowed extensions
-     *
-     * @param string[] $allowedExtensions
-     *
-     * @return void
+     * 
+     * @param string $allowedExtensions
      */
     public function setAllowedExtensions($allowedExtensions)
     {
@@ -152,8 +92,6 @@ class LogoUploader
     }
  
     /**
-     * Retrieve base tmp path
-     *
      * @return string
      */
     public function getBaseTmpPath()
@@ -162,8 +100,6 @@ class LogoUploader
     }
  
     /**
-     * Retrieve base path
-     *
      * @return string
      */
     public function getBasePath()
@@ -172,9 +108,8 @@ class LogoUploader
     }
  
     /**
-     * Retrieve allowed extensions
-     *
-     * @return string[]
+     * 
+     * @return type
      */
     public function getAllowedExtensions()
     {
@@ -182,12 +117,10 @@ class LogoUploader
     }
  
     /**
-     * Retrieve path
-     *
-     * @param string $path
-     * @param string $imageName
-     *
-     * @return string
+     * 
+     * @param type $path
+     * @param type $imageName
+     * @return type
      */
     public function getFilePath($path, $imageName)
     {
@@ -195,12 +128,9 @@ class LogoUploader
     }
  
     /**
-     * Checking file for moving and move it
-     *
-     * @param string $imageName
-     *
-     * @return string
-     *
+     * 
+     * @param type $imageName
+     * @return type
      * @throws LocalizedException
      */
     public function moveFileFromTmp($imageName)
@@ -236,13 +166,7 @@ class LogoUploader
     }
  
     /**
-     * Checking file for save and save it to tmp dir
-     *
-     * @param string $fileId
-     *
-     * @return string[]
-     *
-     * @throws LocalizedException
+     * LocalizedException
      */
     public function saveFileToTmpDir($fileId)
     {
@@ -264,9 +188,7 @@ class LogoUploader
             );
         }
  
-        /**
-         * Workaround for prototype 1.7 methods "isJSON", "evalJSON" on Windows OS
-         */
+        
         $result['tmp_name'] = str_replace('\\', '/', $result['tmp_name']);
         $result['url'] = $this->storeManager
                 ->getStore()

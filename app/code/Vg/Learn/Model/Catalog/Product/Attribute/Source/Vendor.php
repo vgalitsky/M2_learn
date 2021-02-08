@@ -16,9 +16,10 @@ class Vendor extends AbstractSource
             ) {
         $this->dataInterface = $dataInterface;
     }
-    
-    protected $optionFactory;
-    
+    /**
+     * 
+     * @return array
+     */
     public function getAllOptions()
     {
         $collection = $this->dataInterface->create(); 

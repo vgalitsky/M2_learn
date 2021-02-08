@@ -15,29 +15,15 @@ use Vg\Learn\Helper\Debug;
 
 abstract class Vendor extends Action
 {
-    /**
-     * @see _isAllowed()
-     */
+    
     const ACTION_RESOURCE = 'Vg_Learn::vendor';
 
-    /**
-     * @var DataRepositoryInterface
-     */
     protected $dataRepository;
 
-    /**
-     * @var Registry
-     */
     protected $coreRegistry;
 
-    /**
-     * @var PageFactory
-     */
     protected $resultPageFactory;
 
-    /**
-     * @var ForwardFactory
-     */
     protected $resultForwardFactory;
 
     /**

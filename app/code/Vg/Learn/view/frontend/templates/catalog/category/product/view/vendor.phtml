@@ -1,0 +1,16 @@
+<?php
+/* @var Vg\Learn\Model\ResourceModel\Vendor\Collection */
+$vendors = $block->getProductVendorsCollection();
+?>
+<div>
+    <?php echo __('Vedor(s)') ?>:
+    <ul>
+        <?php foreach($vendors as $vendor): ?>
+        <li>
+            <?php echo $vendor->getName() ?>
+            <br/>
+            <?php echo $vendor->getDescription() ?>
+        </li>
+        <?php endforeach;?>
+    </ul>
+</div>

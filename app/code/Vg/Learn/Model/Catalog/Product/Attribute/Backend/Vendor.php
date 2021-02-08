@@ -3,6 +3,11 @@ namespace Vg\Learn\Model\Catalog\Product\Attribute\Backend;
  
 class Vendor extends \Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend
 {
+    /**
+     * 
+     * @param type $object
+     * @return $this
+     */
     public function beforeSave($object)
     {
         $attributeCode = $this->getAttribute()->getName();
@@ -19,6 +24,11 @@ class Vendor extends \Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend
         return $this;
     }
  
+    /**
+     * 
+     * @param type $object
+     * @return $this
+     */
     public function afterLoad($object)
     {
         $attributeCode = $this->getAttribute()->getName();

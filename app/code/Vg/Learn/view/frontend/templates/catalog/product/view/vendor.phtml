@@ -1,2 +1,11 @@
 <?php
-$this->getProduct();
+/* @var Vg\Learn\Model\ResourceModel\Vendor\Collection */
+$vendors = $block->getProductVendorsCollection();
+?>
+<ul>
+    <?php foreach ($vendors as $vendor):?>
+    <li class="product_vendor">
+        <img height="70px" src="<?php echo $block->getVendorLogoImgSrc($vendor)?>"/>
+    </li>
+    <?php endforeach;?>
+</ul>

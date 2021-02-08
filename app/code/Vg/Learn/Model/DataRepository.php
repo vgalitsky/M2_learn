@@ -75,7 +75,7 @@ class DataRepository implements DataRepositoryInterface
             $this->resource->save($data);
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__(
-                'Could not save the data: %1',
+                'Error while save: %1',
                 $exception->getMessage()
             ));
         }

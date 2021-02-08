@@ -11,14 +11,10 @@ class Vendor extends AbstractModel implements DataInterface
     const CACHE_TAG = 'vg_learn_vendor';
     protected $storeManager;
 
-    protected function _construct(
-            //\Magento\Store\Model\StoreManagerInterface $storeManager
-        )
+    protected function _construct()
     {
-        //$this->storeManager = $storeManager;
         $this->_init('Vg\Learn\Model\ResourceModel\Vendor');
     }
-
     /**
      * @return array
      */
@@ -93,21 +89,8 @@ class Vendor extends AbstractModel implements DataInterface
     }
     
     protected function _afterLoad(){
-        if($this->getLogo()){
-            $this->setLogo(
-                    //$this->getMediaUrl().$this->getLogo()
-                    'http://m2.local/pub/media/vg/learn/vendor/logo/file.png'
-                    );
-        }
-        //Debug::dump($this->getData());die();
+
         parent::_afterLoad();
-    }
-    
-    public function getMediaUrl()
-    {
-        $mediaUrl = $this->storeManager->getStore()
-            ->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'vg/learn/logo/';
-        return $mediaUrl;
     }
 
 }

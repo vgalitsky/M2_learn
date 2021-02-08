@@ -1,9 +1,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Vg_Learn::vendor" title="Vedors" module="Vg_Learn" sortOrder="100" resource="Vg_Learn::vendor"/>
-        <add id="Vg_Learn::vendor_add" parent="Vg_Learn::vendor" title="Vendors listing" module="Vg_Learn" sortOrder="10" resource="Vg_Learn::vendor_add"
+        <add id="Vg_Learn::vendor" parent="Magento_Catalog::catalog" title="Vendors" module="Vg_Learn" sortOrder="40" resource="Vg_Learn::vendor"
              action="vglearn/vendor/index"/>
-        <add id="Vg_Learn::vendor_list" parent="Vg_Learn::vendor" title="Add Vedor" module="Vg_Learn" sortOrder="20" resource="Vg_Learn::vendor_list"
-             action="vglearn/vendor/add"/>
     </menu>
 </config>

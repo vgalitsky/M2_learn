@@ -12,10 +12,6 @@ use Vg\Learn\Model\Vendor\LogoUploader;
 
 class UploadLogo extends Action implements HttpPostActionInterface
 {
-    
-    /**
-     * @var logoUploader
-     */
     protected $logoUploader;
     
     /**

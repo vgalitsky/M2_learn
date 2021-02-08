@@ -18,7 +18,7 @@ class InstallData implements InstallDataInterface
             $data = [
                 [
                     'name' => 'Vendor1',
-                    'description' => 'Vendor 1 desc',
+                    'description' => 'Vendor 1 description',
                 ],
             ];
 

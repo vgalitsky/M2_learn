@@ -15,34 +15,16 @@ use Vg\Learn\Model\ResourceModel\Vendor\CollectionFactory;
 
 abstract class MassAction extends Vendor
 {
-    /**
-     * @var Filter
-     */
     protected $filter;
 
-    /**
-     * @var CollectionFactory
-     */
     protected $collectionFactory;
 
-    /**
-     * @var DataRepositoryInterface
-     */
     protected $dataRepository;
-
-    /**
-     * @var ForwardFactory
-     */
+    
     protected $resultForwardFactory;
 
-    /**
-     * @var string
-     */
     protected $successMessage;
 
-    /**
-     * @var string
-     */
     protected $errorMessage;
 
     /**

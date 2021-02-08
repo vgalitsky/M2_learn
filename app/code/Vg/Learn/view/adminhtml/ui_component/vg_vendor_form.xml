@@ -70,21 +70,7 @@
                 <dataScope>name</dataScope>
             </settings>
         </field>
-        <!--field name="created_at" formElement="date">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">data</item>
-                </item>
-            </argument>
-            <settings>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">true</rule>
-                </validation>
-                <dataType>text</dataType>
-                <label translate="true">Created at</label>
-                <dataScope>name</dataScope>
-            </settings>
-        </field-->
+        
         <field name="logo" formElement="imageUploader">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

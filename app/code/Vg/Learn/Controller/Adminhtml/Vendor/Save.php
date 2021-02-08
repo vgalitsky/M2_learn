@@ -19,32 +19,30 @@ use Vg\Learn\Helper\Debug;
 
 class Save extends Vendor
 {
-    /**
-     * @var Manager
-     */
+    
     protected $messageManager;
 
-    /**
-     * @var DataRepositoryInterface
-     */
     protected $dataRepository;
 
-    /**
-     * @var DataInterfaceFactory
-     */
     protected $dataFactory;
 
-    /**
-     * @var DataObjectHelper
-     */
     protected $dataObjectHelper;
     
-    /**
-     * @var LogoUploader
-     */
     protected $logoUploader;
     
 
+    /**
+     * 
+     * @param Registry $registry
+     * @param DataRepositoryInterface $dataRepository
+     * @param PageFactory $resultPageFactory
+     * @param ForwardFactory $resultForwardFactory
+     * @param Manager $messageManager
+     * @param DataInterfaceFactory $dataFactory
+     * @param DataObjectHelper $dataObjectHelper
+     * @param Context $context
+     * @param \Vg\Learn\Controller\Adminhtml\Vendor\logoUploader $logoUploader
+     */
     public function __construct(
         Registry $registry,
         DataRepositoryInterface $dataRepository,

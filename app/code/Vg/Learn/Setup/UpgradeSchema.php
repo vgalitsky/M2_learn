@@ -25,9 +25,8 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         $setup->getTable( 'vg_learn_vendor' ),
                         'logo',
                         [
-                                'type' => \Magento\Framework\DB\Ddl\Table::TYPE_VARCHAR,
+                                'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                                 'nullable' => true,
-                                'length' => '1024',
                                 'comment' => 'logo',
                                 'after' => 'description'
                         ]
